@@ -1,26 +1,59 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* Asegúrate que esto no esté causando conflictos si no estás usando Tailwind activamente para estos elementos */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pan-brown: #5c3a21;
+  --pan-gold: #c47f2e;
+  --pan-cream: #f8f1e7;
+  --pan-white: #ffffff;
+  --pan-dark: #1e1e1e;
+  --pan-gray: #dcdcdc;
+  --pan-lightbrown: #a9745b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Sólo si quieres que algunos elementos externos respeten los colores */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--pan-cream);
+  color: var(--pan-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  background-color: #FAF6F0;
+}
+
+.intro {
+  max-width: 500px;
+  flex: 1;
+  margin: 60px;
+}
+
+.intro h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #4A3B31;
+}
+
+.intro p {
+  margin-bottom: 20px;
+  color: #604E42;
+}
+
+.intro button {
+  background: #C68E4D;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
 }

@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // ...
+  tailwindcss: {
+    config: './tailwind.config.js',
+  },
+  // ...
 };
 
 export default nextConfig;
