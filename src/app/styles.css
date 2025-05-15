@@ -6,157 +6,322 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background-color: #F4E8D4; /* Color crema claro (Swatch 3) */
-  color: #4A3B31; /* Marrón oscuro para texto principal (Swatch 1) */
+  background-color: #F4E8D4; /* Color crema claro */
+  color: #4A3B31; /* Marrón oscuro para texto principal */
+  scroll-behavior: smooth;
 }
 
 /* Encabezado */
 .header {
-  background: #4A3B31; /* Marrón oscuro (Swatch 1) */
-  color: #F4E8D4; /* Color crema claro para texto (Swatch 3) */
-  padding: 10px 10px;
+  background: #4A3B31;
+  color: #F4E8D4;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center;     /* Centra verticalmente */
-  gap: 40px;               /* Espacio entre elementos */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-link-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-img {
-  width: 55px;
-  height: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(198, 142, 77, 0.7);
+  transition: transform 0.3s ease;
 }
 
-.logo { /* Estilo para el texto del logo */
-  font-size: 1.2rem; /* Ajusta el tamaño si es necesario */
-  font-weight: bold;
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
+.logo-img:hover {
+  transform: rotate(10deg) scale(1.05);
 }
 
-/* --- Estilos de Navegación Corregidos --- */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #D4A373; /* Ocre dorado */
+  text-shadow: 1px 1px 2px #3E2A1C;
+}
+
 .nav ul {
   display: flex;
-  list-style: none; /* Quita los puntos de la lista */
-  gap: 30px;
-  padding: 0; /* Remueve padding por defecto del ul */
-  margin: 0;  /* Remueve margen por defecto del ul */
-}
-
-.nav li {
-  /* El font-weight y otros estilos de texto se aplicarán al <a> directamente */
-  /* cursor: pointer; ya no es necesario aquí si el <a> es el objetivo principal */
+  list-style: none;
+  gap: 2.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .nav ul li a {
-  color: #F4E8D4; /* Color crema claro (Swatch 3) para el texto del enlace */
-  text-decoration: none; /* IMPORTANTE: Quita el subrayado azul de los enlaces */
-  font-weight: bold; /* Mantiene el texto en negrita */
-  transition: color 0.3s ease; /* Transición suave para el cambio de color */
-  display: inline-block; /* Permite aplicar padding si es necesario y mejora el área de clic */
-  /* padding: 5px 0; Opcional: añade padding vertical si quieres más espacio */
+  color: #F4E8D4;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.25rem 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-.nav ul li a:hover {
-  color: #C68E4D; /* Ocre dorado (Swatch 4) al pasar el ratón */
+.nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #D4A373;
+  transition: width 0.3s ease;
 }
 
-.nav ul li a:visited {
-  color: #F4E8D4; /* Mantiene el color crema para enlaces visitados */
+.nav ul li a:hover,
+.nav ul li a:focus {
+  color: #D4A373;
 }
-/* --- Fin de Estilos de Navegación Corregidos --- */
 
-/* Sección principal */
+.nav ul li a:hover::after,
+.nav ul li a:focus::after {
+  width: 100%;
+}
+
+/* Hero Section */
 .hero {
   display: flex;
-  flex-wrap: wrap;
-  padding: 40px 20px;
   justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  background-color: #FAF6F0; /* Un crema muy claro, ligeramente más claro que el body */
+  align-items: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #FDF3E7 0%, #EAD8B8 100%);
+  text-align: center;
 }
 
 .intro {
-  max-width: 500px;
-  flex: 1;
-  margin: 60px;
+  max-width: 600px;
 }
 
 .intro h1 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  color: #4A3B31; /* Marrón oscuro (Swatch 1) */
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #6E4B32;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 1px 1px 3px #C68E4D88;
 }
 
-.anahuac { /* Asumimos que este es un texto destacado, usando el acento dorado */
-  color: #C68E4D; /* Ocre dorado (Swatch 4) */
+.anahuac {
+  color: #C68E4D;
+  font-style: italic;
 }
 
 .intro p {
-  margin-bottom: 20px;
-  color: #604E42; /* Marrón medio para párrafos, buena legibilidad */
+  font-size: 1.25rem;
+  color: #604E42;
+  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 .intro button {
-  background: #C68E4D; /* Ocre dorado (Swatch 4) */
+  background-color: #C68E4D;
   color: white;
-  padding: 10px 20px;
+  padding: 0.85rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   border: none;
+  border-radius: 40px;
   cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  box-shadow: 0 6px 10px rgba(198, 142, 77, 0.7);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.intro button:hover {
-  background: #9A3B3B; /* Marrón rojizo/Russet (Swatch 5) para hover */
+.intro button:hover,
+.intro button:focus {
+  background-color: #9A3B3B;
+  transform: scale(1.05);
 }
 
 .hashtag {
-  color: #C68E4D; /* Ocre dorado (Swatch 4) */
-  margin-top: 20px;
-  font-weight: bold;
+  margin-top: 1.8rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #C68E4D;
+  letter-spacing: 0.15em;
+  user-select: none;
+  text-shadow: 1px 1px 3px #6E4B32AA;
 }
 
-/* --- Galería tipo collage CON SCROLL (Implementación con JS/GSAP) --- */
+/* Productos Section */
+.productos-main {
+  background-color: #fffaf4;
+  padding: 4rem 1rem;
+}
 
-.galeria-scroll-wrapper {
-  max-width: 50%;
-  margin: 40px auto;
+.productos-hero {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 3rem auto;
+}
+
+.productos-hero h1 {
+  font-size: 2.8rem;
+  color: #6E4B32;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px #C68E4D88;
+}
+
+.productos-hero p {
+  font-size: 1.1rem;
+  color: #604E42;
+  font-weight: 500;
+}
+
+/* Grid Productos */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.producto-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(74, 59, 49, 0.12);
   overflow: hidden;
-  background-color: #FAF6F0; /* Mismo crema muy claro que el hero */
-  padding: 20px 0;
-  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(74, 59, 49, 0.2);
+}
+
+.producto-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid #F4E8D4;
+  transition: transform 0.4s ease;
+}
+
+.producto-card:hover img {
+  transform: scale(1.05);
+}
+
+.producto-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-card-content h3 {
+  font-size: 1.5rem;
+  color: #6E4B32;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 0 1px 2px #C68E4D88;
+}
+
+.descripcion {
+  font-size: 1rem;
+  color: #604E42;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.precio {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #9A3B3B;
+  margin-bottom: 1rem;
+}
+
+.btn-pedir {
+  background-color: #C68E4D;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: start;
+}
+
+.btn-pedir:hover,
+.btn-pedir:focus {
+  background-color: #9A3B3B;
+  transform: scale(1.05);
+}
+
+/* Galería tipo scroll */
+.galeria-scroll-wrapper {
+  max-width: 100%;
+  margin: 3rem auto;
+  overflow-x: auto;
+  background-color: #FAF6F0;
+  padding: 1.5rem 0;
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  scrollbar-width: thin;
+  scrollbar-color: #C68E4D #FAF6F0;
+}
+
+.galeria-scroll-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.galeria-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #C68E4D;
+  border-radius: 10px;
 }
 
 .galeria-scroll-track {
   display: flex;
   width: max-content;
-  will-change: transform;
+  gap: 1rem;
+  padding-left: 1rem;
 }
 
 .galeria-custom {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 200px);
-  gap: 15px;
-  width: 660px;
+  grid-template-columns: repeat(4, 160px);
+  grid-template-rows: repeat(3, 140px);
+  gap: 1rem;
+  width: max-content;
   flex-shrink: 0;
-  margin-right: 15px;
-  background-color: transparent;
 }
 
 .galeria-custom img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 11px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra genérica oscura */
-  display: block;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.galeria-custom img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 10px 25px rgba(198, 142, 77, 0.5);
+  z-index: 2;
+  position: relative;
 }
 
 .img1 { grid-column: 1 / 3; grid-row: 1 / 2; }
@@ -167,83 +332,12 @@ body {
 .img6 { grid-column: 1 / 3; grid-row: 3 / 4; }
 .img7 { grid-column: 3 / 5; grid-row: 3 / 4; }
 
-.galeria-custom img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(198, 142, 77, 0.3); /* Sombra con tono Ocre dorado (Swatch 4) */
-  z-index: 2;
-  position: relative;
-}
-/* ------------------------------------------------------------ */
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav ul { /* Ajustes para nav en móvil */
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .galeria-scroll-wrapper {
-    max-width: 100%;
-    padding: 10px 0;
-    margin: 20px auto;
-  }
-
-  .galeria-custom {
-    width: 600px;
-    grid-template-rows: repeat(3, 150px);
-    gap: 10px;
-    margin-right: 10px;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .footer-section {
-    min-width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .footer-section.logo {
-    align-items: center;
-    flex-basis: auto;
-  }
-
-  .footer-section h3 {
-    margin-bottom: 8px;
-  }
-
-  .footer-section p {
-    font-size: 0.9rem;
-  }
-  .footer-bottom {
-    font-size: 0.75rem;
-  }
-} /* Fin de @media */
-
-
 /* Footer */
 .footer {
-  background-color: #4A3B31; /* Marrón oscuro (Swatch 1) */
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
-  padding: 25px 20px 15px;
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
+  background-color: #4A3B31;
+  color: #F4E8D4;
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .footer-container {
@@ -251,19 +345,16 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: 1200px;
-  margin: 0 auto 15px auto;
-  gap: 20px 30px;
+  margin: 0 auto;
+  gap: 2rem;
 }
 
 .footer-section {
-  flex: 1;
-  min-width: 180px;
-  margin-bottom: 15px;
+  flex: 1 1 220px;
+  margin-bottom: 1.5rem;
 }
 
-
 .footer-section.logo {
-  flex-basis: 220px;
   flex-grow: 0;
   display: flex;
   justify-content: center;
@@ -271,253 +362,97 @@ body {
 }
 
 .footer-logo {
-  width: 150px;
+  width: 110px;
   height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #C68E4D;
 }
 
 .footer-section h3 {
-  font-size: 1rem;
-  color: #C68E4D; /* Ocre dorado (Swatch 4) */
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #C68E4D;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 
 .footer-section ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .footer-section ul li {
-  margin-bottom: 8px;
+  margin-bottom: 0.6rem;
 }
 
 .footer-section ul li a {
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
+  color: #F4E8D4;
   text-decoration: none;
   transition: color 0.3s ease;
-  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .footer-section ul li a:hover {
-  color: #DAB084; /* Ocre dorado más claro para hover */
+  color: #DAB084;
   text-decoration: underline;
 }
 
-
 .footer-section p {
-  margin-bottom: 5px;
-  font-size: 0.85rem;
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
+  font-size: 0.95rem;
   line-height: 1.4;
+  margin-bottom: 0.5rem;
 }
-
 
 .footer-bottom {
   text-align: center;
-  padding-top: 15px;
-  margin-top: 10px;
-  border-top: 1px solid #847760; /* Marrón khaki/oliva para borde (Swatch 2) */
-  font-size: 0.8rem;
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
-  line-height: 1.5;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid #847760;
+  font-size: 0.85rem;
+  color: #F4E8D4;
+  font-weight: 500;
 }
 
 .footer-bottom a {
-  color: #C68E4D; /* Ocre dorado (Swatch 4) */
+  color: #C68E4D;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-bottom a:hover {
-  color: #DAB084; /* Ocre dorado más claro para hover */
   text-decoration: underline;
 }
 
-/* Estilos para los iconos de redes sociales */
-.social-links {
-  display: flex;
-  align-items: center;
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-.social-links img {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-}
+  .nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
 
-/* === ESTILOS PARA LA PÁGINA DE PRODUCTOS === */
+  .productos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
 
-/* Hero section para la página de productos */
-.productos-hero {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #FAF6F0; /* Crema muy claro, igual que el hero de la home */
-  
-  border-bottom: 3px solid #C68E4D; /* Ocre dorado, para un toque distintivo */
-}
+  .galeria-custom {
+    grid-template-columns: repeat(2, 160px);
+    grid-template-rows: repeat(5, 140px);
+  }
 
-.productos-hero h1 {
-  font-size: 2.8rem;
-  color: whitesmoke; /* Marrón oscuro */
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
-.productos-hero p {
-  font-size: 1.2rem;
-  color: #604E42; /* Marrón medio para legibilidad */
-  max-width: 750px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Contenedor principal de la página de productos */
-.productos-main {
-  padding: 0; /* Quitamos padding general para que el hero ocupe todo el ancho */
-  background-color: #FFFFFF; /* Fondo blanco o un crema muy sutil para el área de cards */
-}
-
-/* Grid para las tarjetas de productos */
-.productos-grid {
-  display: grid;
-  /* Ajusta minmax para el tamaño deseado de tus tarjetas. 320px es un buen punto de partida. */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px; /* Espacio entre tarjetas */
-  padding: 40px 25px; /* Espaciado alrededor del grid */
-  max-width: 1300px; /* Ancho máximo del contenedor del grid */
-  margin: 0 auto; /* Centrar el grid */
-}
-
-/* Tarjeta de producto individual */
-.producto-card {
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(74, 59, 49, 0.08); /* Sombra sutil con tono marrón */
-  overflow: hidden; /* Para que la imagen no se salga del border-radius */
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.35s ease;
-}
-
-.producto-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(74, 59, 49, 0.15); /* Sombra más pronunciada al hacer hover */
-}
-
-.producto-card img {
-  width: 100%;
-  height: 240px; /* Altura fija para las imágenes de producto */
-  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
-  border-bottom: 1px solid #F4E8D4; /* Línea sutil separadora */
-}
-
-/* Contenido de la tarjeta de producto (texto, precio, botón) */
-.producto-card-content {
-  padding: 20px;
-  flex-grow: 1; /* Permite que esta sección ocupe el espacio disponible */
-  display: flex;
-  flex-direction: column; /* Organiza el contenido verticalmente */
-}
-
-.producto-card h3 {
-  font-size: 1.7rem; /* Tamaño del nombre del producto */
-  color: #4A3B31; /* Marrón oscuro */
-  margin-bottom: 10px;
-  font-weight: 600; /* Un poco más de peso */
-}
-
-.producto-card .descripcion {
-  font-size: 0.95rem;
-  color: #604E42; /* Marrón medio */
-  line-height: 1.5;
-  margin-bottom: 15px;
-  flex-grow: 1; /* Hace que la descripción ocupe el espacio y empuje el precio/botón hacia abajo */
-}
-
-.producto-card .precio {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #9A3B3B; /* Marrón rojizo/Russet para el precio, destaca */
-  margin-bottom: 20px;
-}
-
-/* Botón dentro de la tarjeta de producto */
-.producto-card .btn-pedir {
-  background-color: #C68E4D; /* Ocre dorado */
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: auto; /* Empuja el botón al final de la tarjeta */
-  display: block; /* Para que ocupe el ancho disponible si es necesario o usar width: fit-content */
-  width: 100%; /* O width: fit-content; align-self: flex-start; */
-}
-
-.producto-card .btn-pedir:hover {
-  background-color: #AF6F35; /* Un ocre dorado más oscuro para el hover */
-  transform: scale(1.03); /* Ligero zoom al botón */
-}
-
-/* Pequeña insignia para productos de temporada */
-.badge-temporada {
-  display: inline-block;
-  background-color: #847760; /* Marrón khaki/oliva */
-  color: white;
-  padding: 3px 8px;
-  font-size: 0.75rem;
-  border-radius: 4px;
-  margin-left: 8px;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* Estilo para el enlace activo en la barra de navegación */
-.nav ul li.active > a {
-  color: #C68E4D !important; /* Ocre dorado, el color de acento */
-  font-weight: bold; /* Ya es bold por .nav ul li a, pero !important lo refuerza si es necesario */
-  /* Opcional: añadir un borde inferior o algún otro indicador visual
-  border-bottom: 2px solid #C68E4D;
-  padding-bottom: 5px;
-  */
-}
-
-/* Asegurar que el logo en el header sea un enlace */
-.header .logo-link-header {
-    display: flex;
+  .footer-container {
+    flex-direction: column;
     align-items: center;
-    text-decoration: none; /* Quitar subrayado del enlace */
-    color: inherit; /* Heredar color del .header o .logo */
-    gap: 15px; /* Espacio entre imagen y texto del logo */
-}
-.header .logo-link-header .logo {
-    color: #F4E8D4; /* Asegurar que el texto del logo sea el crema */
-}
+    text-align: center;
+    gap: 1.5rem;
+  }
 
-
-/* Footer bottom para el año y créditos */
-.footer-bottom {
-  text-align: center;
-  padding-top: 15px; /* Ajustado del CSS anterior */
-  margin-top: 10px; /* Ajustado del CSS anterior */
-  border-top: 1px solid #847760; /* Borde con Marrón khaki/oliva (Swatch 2) */
-  font-size: 0.85rem; /* Ajustado del CSS anterior */
-  color: #F4E8D4; /* Color crema claro (Swatch 3) */
-  line-height: 1.5; /* Ajustado del CSS anterior */
-}
-
-.footer-bottom a { /* Por si añades enlaces en el futuro */
-  color: #C68E4D; /* Ocre dorado */
-  text-decoration: none;
-}
-
-.footer-bottom a:hover {
-  text-decoration: underline;
+  .footer-section.logo {
+    margin-bottom: 2rem;
+  }
 }

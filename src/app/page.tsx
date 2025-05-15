@@ -61,7 +61,7 @@ export default function Home() {
 
         <div className="galeria-scroll-track">
           <div className="galeria-custom">
-            <img src="../public/images/cuernito.png" alt="Pan de muerto" className="img1" />
+            <img src="/images/cuernito.png" alt="Pan de muerto" className="img1" />
             <img src="/images/concha.jpg" alt="Concha" className="img2" />
             <img src="/images/bollo_integral.jpg" alt="Bollo integral" className="img3" />
             <img src="/images/pan_muerto.jpg" alt="Pan de muerto" className="img4" />
