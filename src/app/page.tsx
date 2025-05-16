@@ -1,7 +1,10 @@
-// app/page.tsx
+"use client";
+
+
 import Image from "next/image";
 import Link from "next/link";
 import "./styles.css";
+import { useState } from "react";
 
 const productosPopulares = [
   {
@@ -25,6 +28,34 @@ const productosPopulares = [
 ];
 
 export default function Home() {
+  const [carrito, setCarrito] = useState<
+    { nombre: string; precio: number; cantidad: number }[]
+  >([]);
+  const [mostrarCarrito, setMostrarCarrito] = useState(false);
+
+  function agregarAlCarrito(producto: { nombre: string; precio: number }) {
+    setCarrito((prev) => {
+      const existe = prev.find((p) => p.nombre === producto.nombre);
+      if (existe) {
+        return prev.map((p) =>
+          p.nombre === producto.nombre ? { ...p, cantidad: p.cantidad + 1 } : p
+        );
+      } else {
+        return [...prev, { ...producto, cantidad: 1 }];
+      }
+    });
+  }
+
+  function eliminarDelCarrito(nombre: string) {
+    setCarrito((prev) => prev.filter((p) => p.nombre !== nombre));
+  }
+
+  function toggleCarrito() {
+    setMostrarCarrito(!mostrarCarrito);
+  }
+
+  const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+
   return (
     <main>
       <header className="header">
@@ -44,14 +75,20 @@ export default function Home() {
             <li><Link href="#productos">Productos</Link></li>
             <li><Link href="#novedades">Novedades</Link></li>
             <li><Link href="#nosotros">Nosotros</Link></li>
-            <li><Link href="#pedidos">Pedidos</Link></li>
+            <li>
+              <button onClick={toggleCarrito} className="btn-carrito-toggle">
+                Carrito ({carrito.reduce((sum, p) => sum + p.cantidad, 0)})
+              </button>
+            </li>
           </ul>
         </nav>
       </header>
 
       <section className="hero">
         <div className="intro">
-          <h1>Bienvenido a <span className="anahuac">El Pan de Cada Día</span></h1>
+          <h1>
+            Bienvenido a <span className="anahuac">El Pan de Cada Día</span>
+          </h1>
           <p>
             Desde hace más de 30 años, horneamos con pasión panes que conectan generaciones. Cada pieza cuenta una historia de tradición y sabor.
           </p>
@@ -90,14 +127,52 @@ export default function Home() {
                 <h3>{producto.nombre}</h3>
                 <p className="descripcion">{producto.descripcion}</p>
                 <p className="precio">${producto.precio} MXN</p>
-                <button className="btn-pedir">Añadir al carrito</button>
+                <button
+                  className="btn-pedir"
+                  onClick={() => agregarAlCarrito(producto)}
+                >
+                  Añadir al carrito
+                </button>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-     
+      {/* Carrito overlay */}
+      {mostrarCarrito && (
+        <div className="carrito-overlay" onClick={toggleCarrito}>
+          <div className="carrito" onClick={(e) => e.stopPropagation()}>
+            <h2>Tu Carrito</h2>
+            {carrito.length === 0 ? (
+              <p>Tu carrito está vacío.</p>
+            ) : (
+              <ul>
+                {carrito.map(({ nombre, precio, cantidad }) => (
+                  <li key={nombre} className="carrito-item">
+                    <span>
+                      {nombre} x {cantidad}
+                    </span>
+                    <span>${precio * cantidad} MXN</span>
+                    <button
+                      className="btn-eliminar"
+                      onClick={() => eliminarDelCarrito(nombre)}
+                    >
+                      Eliminar
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="carrito-total">
+              <strong>Total: </strong>${total} MXN
+            </div>
+            <button className="btn-cerrar" onClick={toggleCarrito}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <div className="footer-container">
@@ -113,16 +188,30 @@ export default function Home() {
           <div className="footer-section">
             <h3>Navegación</h3>
             <ul>
-              <li><Link href="#nosotros">Nosotros</Link></li>
-              <li><Link href="#productos">Productos</Link></li>
-              <li><Link href="#">Contacto</Link></li>
+              <li>
+                <Link href="#nosotros">Nosotros</Link>
+              </li>
+              <li>
+                <Link href="#productos">Productos</Link>
+              </li>
+              <li>
+                <Link href="#">Contacto</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-section">
             <h3>Síguenos</h3>
             <ul>
-              <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
-              <li><a href="https://wa.me/522380000000" target="_blank">WhatsApp</a></li>
+              <li>
+                <a href="https://facebook.com" target="_blank">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/522380000000" target="_blank">
+                  WhatsApp
+                </a>
+              </li>
             </ul>
           </div>
           <div className="footer-section">
