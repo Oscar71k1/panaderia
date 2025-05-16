@@ -456,3 +456,80 @@ body {
     margin-bottom: 2rem;
   }
 }
+
+
+/* 🎬 Sección de video con fondo difuso decorativo */
+.video-section {
+  position: relative;
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 🌫 Difuminado suave tipo glow detrás del video */
+.video-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -25%;
+  width: 150%;
+  height: 200%;
+  
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 🖼 Contenedor del video */
+.video-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border: 3px solid #d4a373;
+}
+
+/* 📹 Video estilizado */
+.video-panaderia {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  filter: brightness(0.95) contrast(1.05) saturate(1.1);
+  transition: filter 0.3s ease;
+}
+
+.video-panaderia:hover {
+  filter: brightness(1) saturate(1.2);
+}
+
+/* 📝 Texto sobre el video con fondo blur */
+.video-overlay-text {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 245, 230, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ✨ Estilo del texto */
+.video-overlay-text h2 {
+  margin: 0;
+  color: #5c3a21;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}

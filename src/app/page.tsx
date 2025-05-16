@@ -87,8 +87,10 @@ export default function Home() {
       <section className="hero">
         <div className="intro">
           <h1>
-            Bienvenido a <span className="anahuac">El Pan de Cada Día</span>
+          Bienvenido a <br />
+           <span className="anahuac">El Pan de Cada Día</span>
           </h1>
+
           <p>
             Desde hace más de 30 años, horneamos con pasión panes que conectan generaciones. Cada pieza cuenta una historia de tradición y sabor.
           </p>
@@ -96,17 +98,25 @@ export default function Home() {
           <h2 className="hashtag">#SABORQUESECOMPARTE</h2>
         </div>
 
-        <div className="galeria-scroll-track">
-          <div className="galeria-custom">
-            <img src="/images/cuernito.png" alt="Pan de muerto" className="img1" />
-            <img src="/images/concha.jpg" alt="Concha" className="img2" />
-            <img src="/images/bollo_integral.jpg" alt="Bollo integral" className="img3" />
-            <img src="/images/pan_muerto.jpg" alt="Pan de muerto" className="img4" />
-            <img src="/images/concha.jpg" alt="Concha" className="img5" />
-            <img src="/images/bollo_integral.jpg" alt="Bollo integral" className="img6" />
-            <img src="/images/concha.jpg" alt="Concha" className="img7" />
-          </div>
-        </div>
+             <section className="video-section">
+  <div className="video-wrapper">
+    <video
+      className="video-panaderia"
+      autoPlay
+      loop
+      muted
+      playsInline
+    >
+      <source src="/video/panaderia.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
+    <div className="video-overlay-text">
+      <h2>¡Tradición y sabor en cada bocado!</h2>
+    </div>
+  </div>
+</section>
+
+
       </section>
 
       <section id="productos" className="productos-main">
@@ -222,9 +232,7 @@ export default function Home() {
             <p>pedidos@elpandecadadia.com</p>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>© 2025 Panadería El Pan de Cada Día. Todos los derechos reservados.</p>
-        </div>
+       
       </footer>
     </main>
   );
