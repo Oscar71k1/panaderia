@@ -77,8 +77,15 @@ export default function Home() {
             <li><Link href="#nosotros">Nosotros</Link></li>
             <li>
               <button onClick={toggleCarrito} className="btn-carrito-toggle">
-                Carrito ({carrito.reduce((sum, p) => sum + p.cantidad, 0)})
-              </button>
+  <span className="icono-carrito">🛒</span>
+  <span>Carrito</span>
+  {carrito.length > 0 && (
+    <span className="notificacion-carrito">
+      {carrito.reduce((sum, p) => sum + p.cantidad, 0)}
+    </span>
+  )}
+</button>
+
             </li>
           </ul>
         </nav>
